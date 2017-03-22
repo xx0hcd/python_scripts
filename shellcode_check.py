@@ -1,5 +1,5 @@
 #!/usr/bin/python
-#paste shellcode continous in quotes i.e. "\xfc\x6a\xeb\x47\xe8\xf9\xff\xff\xff\x60\........"
+#paste shellcode continuous in quotes i.e. "\xfc\x6a\xeb\x47\xe8\xf9\xff\xff\xff\x60\........"
 
 import sys
 import pylibemu
