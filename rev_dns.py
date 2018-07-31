@@ -35,7 +35,8 @@ def dns_rev(file_arg):
 				try:
 					revdns = dns.reversename.from_address(jnd)
 					soc = str(dns.resolver.query(revdns, "PTR")[0])
-					i.write(str(soc) + "\n")
+					soc2 = soc.rstrip('.')
+					i.write(str(soc2) + "\n")
 					
 				except:
 					continue
