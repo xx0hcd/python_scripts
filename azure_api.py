@@ -66,12 +66,16 @@ def uri_setup():
             uri = 'https://management.azure.com/subscriptions/' + ids + '/providers/Microsoft.Network/publicIPAddresses?api-version=2019-11-01'
             api_call = requests.get(uri, headers=headers)
             out1 = api_call.json()
-
+            out2 = api_call.text
+            out3 = json.loads(out2)
             try:
-                if 'ipAddress' in out1['value'][0]['properties']:
-                    print("\n","Public IP: ", out1["value"][0]["properties"]["ipAddress"], file=open('/tmp/final_out.txt', 'a'))
-                if 'fqdn' in out1['value'][0]['properties']['dnsSettings']:
-                    print(" FQDN/Hostname: ", out1["value"][0]["properties"]["dnsSettings"]["fqdn"], "\n", file=open('/tmp/final_out.txt', 'a'))
+                i = 0
+                while i < len(out1['value']):
+                    if 'ipAddress' in out3['value'][0]['properties']:
+                        print("\n","Public IP: ", out3["value"][i]["properties"]["ipAddress"], file=open('/tmp/final_out.txt', 'a'))
+                    if 'fqdn' in out3['value'][0]['properties']['dnsSettings']:
+                        print(" FQDN/Hostname: ", out3["value"][i]["properties"]["dnsSettings"]["fqdn"], "\n", file=open('/tmp/final_out.txt', 'a'))
+                        i += 1
             except:
                 pass
 
