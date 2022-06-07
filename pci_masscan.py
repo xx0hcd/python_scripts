@@ -85,7 +85,7 @@ def scanrun():
                         pprint.pprint("No open TCP or UDP ports were found in this scan", file)
                     continue
             
-    except Exception:
+    except Exception as e:
         #if something goes wrong will print the exact error message, mostly useful during writing/debugging.
         print("Error: ",e)
 
